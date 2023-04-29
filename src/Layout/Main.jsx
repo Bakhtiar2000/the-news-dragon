@@ -6,11 +6,13 @@ import Footer from '../Pages/Shared/Footer/Footer';
 import LeftNav from '../Pages/Shared/LeftNav/LeftNav';
 import RightNav from '../Pages/Shared/RightNav/RightNav';
 import { Outlet } from 'react-router-dom';
+import NavigationBar from '../Pages/Shared/NavigationBar/NavigationBar';
 
 const Main = () => {
     return (
         <div>
             <Header></Header>
+            <NavigationBar></NavigationBar>
             <Container>
                 <Row>
 
@@ -21,7 +23,7 @@ const Main = () => {
                     <Col lg={6}>
                         <Outlet></Outlet> {/* রাউট অনুসারে কোন কিছু চেঞ্জ হইলে সেটা <outlet> এর মধ্যে থাকে */}
                     </Col>
-                    
+
                     <Col lg={3}>
                         <RightNav></RightNav>
                     </Col>
