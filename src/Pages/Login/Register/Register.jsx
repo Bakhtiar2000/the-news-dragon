@@ -2,7 +2,10 @@ import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import { getAuth, updateProfile } from 'firebase/auth';
+import app from '../../../Firebase/firebase.config';
 
+const auth= getAuth(app)
 const Register = () => {
     const [error, setError]= useState('')
     const [success, setSuccess]= useState('')
@@ -26,6 +29,14 @@ const Register = () => {
             setSuccess('Registration successful')
         })
         .catch(err=> setError(err.message))
+
+        updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+          })
+        .then(() => {
+            console.log('Profile Updated!') 
+          })
+          .catch((error) => setError(error.message));
     }
 
     return (

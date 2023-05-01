@@ -6,7 +6,13 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../../Providers/AuthProvider';
 
 const NavigationBar = () => {
-    const { user } = useContext(AuthContext)
+    const {user, logout}= useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logout()
+            .then()
+            .catch(err => console.log(err))
+        }
     return (
         <Container>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='mb-3 rounded'>
@@ -25,7 +31,10 @@ const NavigationBar = () => {
                             }
                             {
                                 user ?
-                                    <Button variant="secondary">Logout</Button> :
+                                    <>
+                                    <span>{user.email} </span>
+                                    <Button onClick={handleLogOut} variant="secondary">Logout</Button>
+                                    </> :
                                     <Link to="/login"><Button variant="secondary">Login</Button></Link>
                             }
 
