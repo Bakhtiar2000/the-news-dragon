@@ -32,7 +32,7 @@ const NavigationBar = () => {
                             {
                                 user ?
                                     <>
-                                    <span>{user.email} </span>
+                                    <span>{user.displayName} </span>
                                     <Button onClick={handleLogOut} variant="secondary">Logout</Button>
                                     </> :
                                     <Link to="/login"><Button variant="secondary">Login</Button></Link>
